@@ -1,0 +1,33 @@
+LMS:learning management system
+------------------------------
+->LMS   
+    ->Login
+    ->Dashboard:Enrolled Courses
+    ->Course Details 
+        ->Frontend
+            ->Html
+                ->title of  a first class
+                    ->video
+                ->title of a second class
+                    ->video
+                .
+                .
+                .
+                .
+            ->Css
+            ->Js
+        ->Backend
+            ->Python
+            ->Java
+
+
+    ->Profile 
+Admin:
+    ->Create Student  : Mail sending
+    ->Course Creation
+    ->Course Allocation
+    ->Student Details
+    
+
+
+

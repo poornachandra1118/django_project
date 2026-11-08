@@ -1,0 +1,121 @@
+
+{% extends 'Student/Base.html' %}
+
+
+{% block body %}
+
+<div class='row container-fluid'>
+    <div class='col-lg-4 col-md-4 bg-dark text-white pt-5' style='height:500px'>
+                <div class="accordion " id="accordionExample">
+        <div class="accordion-item bg-dark text-white" >
+            <h2 class="accordion-header">
+            <button class="accordion-button bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Frontend
+            </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+               <ul class="list-group">
+                {% for x in FRONT_END %}
+                <a style='text-decoration:none' href="{% url 'Course_details' x.id %}">
+  <li class="list-group-item bg-dark text-white">{{x.Course_name}}</li>
+                </a>
+                {% endfor %}
+
+</ul>
+            </div>
+            </div>
+        </div>
+        <div class="accordion-item bg-dark text-white">
+            <h2 class="accordion-header">
+            <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Backend
+            </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+               <ul class="list-group">
+    {% for x in BACKEND %}
+                <a style='text-decoration:none' href="{% url 'Course_details' x.id %}">
+  <li class="list-group-item bg-dark text-white">{{x.Course_name}}</li>
+                </a>
+                {% endfor %}
+
+  
+</ul>
+            </div>
+            </div>
+        </div>
+
+        <div class="accordion-item bg-dark text-white">
+            <h2 class="accordion-header">
+            <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+                DATABASE
+            </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+               <ul class="list-group">
+    {% for x in DATABASE %}
+                <a style='text-decoration:none' href="{% url 'Course_details' x.id %}">
+  <li class="list-group-item bg-dark text-white">{{x.Course_name}}</li>
+                </a>
+                {% endfor %}
+
+  
+</ul>
+            </div>
+            </div>
+        </div>
+       
+        </div>
+        
+    </div>
+
+
+    <div class='col-lg-8 col-md-8'>
+        <center>
+            <h4>Course Topics</h4>
+        </center>
+        {% for x in Topics %}
+        <div data-bs-toggle="modal" data-bs-target="#staticBackdrop{{forloop.counter}}" class='border border-1 rounded rounded-2 bg-light p-3 text-center mb-3'  >
+            <h6>{{x.Title}}</h6>
+        </div>
+
+        
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop{{forloop.counter}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{x.Title}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <video controls='controls' width="100%" height="315" >
+                <source src="{{x.recorded_video.url}}"  type='video/mp4' >
+        </video> 
+        {% comment %} <iframe width="100%" height="315" src="https://www.youtube.com/embed/lGKGDxwvrEQ?si=3V5XjF83uc1o0sZW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> {% endcomment %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+        {% endfor %}
+       
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+  {% endblock %}

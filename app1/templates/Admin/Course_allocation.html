@@ -1,0 +1,38 @@
+   
+   {% extends 'Admin/Admin_base.html' %}
+   
+   {% block body %}
+
+        <div class='col-6 offset-3'>
+        <form method='POST'>
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Student Info</label>
+         <select name='student' class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <option selected>Select The Student Here</option>
+            {% for x in std_data %}
+            <option value="{{x.id}}">{{x.Student_id}}|{{x.Student_Name}}</option>
+            {% endfor %}
+            </select>
+                
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Courses</label>
+                <select name='course' class="form-select" multiple aria-label="multiple select example">
+                {% for x in all_courses %}
+                <option value="{{x.id}}">{{x.Course_name}}</option>
+                {% endfor %}
+                </select>
+                
+            </div>
+            
+
+           
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+
+
+        
+  {% endblock %}

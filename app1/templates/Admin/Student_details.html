@@ -1,0 +1,46 @@
+    {% extends 'Admin/Admin_base.html' %}
+    {% block body %}
+
+
+    <center>
+        <h1 class='mt-4'>Student Details</h1>
+    </center>
+
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Student Id</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Student Mobile</th>
+      <th scope="col">Student Email</th>
+      <th scope="col">Student Profile</th>
+      <th scope="col">Student Password</th>
+      <th scope="col">Course Enrollment</th>
+      <th scope="col">Enrollment Date|Time</th>
+      <th scope="col">Course validity</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for x in std_data %}
+    <tr>
+      <th scope="row">{{x.Student_id}}</th>
+      <td>{{x.Student_Name}}</td>
+      <td>{{x.Student_Mobile}}</td>
+      <td>{{x.Student_Email}}</td>
+        <td><img src="{{x.Student_profile.url}}" width='100px' height='150px' /></td>
+          <td>{{x.password}}</td>
+          <td>{% for y in x.Student_Courses.all %}
+                    |{{y.Course_name}}
+            {% endfor %}</td>
+            <td>{{x.Enrollment_date}}</td>
+          <td>{{x.Course_validity}}</td>
+         
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+
+
+    {% endblock%}

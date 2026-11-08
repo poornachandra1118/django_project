@@ -1,0 +1,27 @@
+{% extends 'Student/Base.html' %}
+
+
+ {% block body %}
+
+      
+        <center>
+          <h3>Hii {{ data.Student_Name }},Welcome To LMS </h3>
+             <a href="{% url 'Course_details' pk %}" style='text-decoration:none;'>
+        <div class="card mt-5" style="width: 18rem;">
+         
+            <div class="card-body">
+                <h5 class="card-title">Course Details</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">
+                     {% for x in data.Student_Courses.all %}
+                                |{{x.Course_name}}
+                     {% endfor %}
+                </h6>
+               
+            </div>
+         
+            </div>
+             </a>
+
+        </center>
+     
+  {% endblock %}
